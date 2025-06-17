@@ -8,7 +8,7 @@ from voice_transcriber.transcribe import transcribe_audio
 
 def main() -> None:
     """Transcribe an audio file and chunk the resulting transcript."""
-    audio_file = Path("audio/memo1.m4a")
+    audio_file = Path("audio/interview.m4a")
     output_dir = Path("output")
 
     transcript_path = transcribe_audio(audio_file, output_dir)
