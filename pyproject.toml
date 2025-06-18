@@ -103,3 +103,11 @@ strict_optional = true
 module = ["tests.*"]
 disallow_untyped_defs = false
 disallow_incomplete_defs = false
+
+[tool.pytest.ini_options]
+addopts = "--cov=voice_transcriber --cov-report=term-missing --cov-report=xml --cov-fail-under=90"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["voice_transcriber"]
+omit = ["src/voice_transcriber/main.py"]

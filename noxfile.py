@@ -18,6 +18,7 @@ def test(session):
         "--cov=voice_transcriber",
         "--cov-report=term-missing",
         "--cov-report=xml",
+        "--cov-fail-under=90",
         "tests/",
         *session.posargs,
     )
