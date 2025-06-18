@@ -110,4 +110,3 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 source = ["voice_transcriber"]
-omit = ["src/voice_transcriber/main.py"]
