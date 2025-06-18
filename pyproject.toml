@@ -30,11 +30,18 @@ dev = [
     "jupyter>=1.0.0",
     "ipykernel>=6.0.0",
 ]
+test = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+    "nox>=2024.2.15",
+]
 
 [tool.ruff]
 # Enable all rules by default
 select = ["E", "F", "B", "I", "N", "UP", "PL", "RUF"]
-ignore = []
+ignore = ["PLR2004"]
 
 # Allow autofix for all enabled rules (when `--fix` is used)
 fixable = ["ALL"]

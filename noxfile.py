@@ -1,9 +1,11 @@
 """Nox configuration for automated testing, linting, and type checking."""
 
+from pathlib import Path
+
 import nox
 
 # Default sessions to run when nox is called without arguments
-nox.options.sessions = ["lint", "typecheck", "test"]
+nox.options.sessions = ["lint", "fix", "typecheck", "test"]
 
 # Python versions to test against
 PYTHON_VERSIONS = ["3.10"]
@@ -22,6 +24,14 @@ def test(session):
         "tests/",
         *session.posargs,
     )
+    
+    # Clean up coverage files after testing
+    coverage_files = [".coverage", "coverage.xml"]
+    for file in coverage_files:
+        file_path = Path(file)
+        if file_path.exists():
+            file_path.unlink()
+            session.log(f"Cleaned up {file}")
 
 
 @nox.session(python=PYTHON_VERSIONS)
@@ -36,7 +46,7 @@ def lint(session):
 def typecheck(session):
     """Run the type checker."""
     session.install("-e", ".[dev]")
-    session.run("mypy", "src/voice_transcriber", "tests/")
+    session.run("mypy", "src/voice_transcriber")
 
 
 @nox.session(python=PYTHON_VERSIONS)

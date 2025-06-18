@@ -14,3 +14,7 @@ output/
 
 # Input
 audio/
+
+# Coverage
+coverage.xml
+.coverageåå

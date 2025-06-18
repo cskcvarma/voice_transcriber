@@ -1,6 +1,6 @@
 import json
-import types
 import sys
+import types
 from pathlib import Path
 
 import pytest
@@ -18,7 +18,7 @@ def load_model(name: str) -> DummyModel:
 whisper_mock.load_model = load_model
 sys.modules["whisper"] = whisper_mock
 
-from voice_transcriber.transcribe import transcribe_audio
+from voice_transcriber.transcribe import transcribe_audio  # noqa: E402
 
 
 def test_transcribe_audio(tmp_path: Path) -> None:
